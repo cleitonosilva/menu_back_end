@@ -30,6 +30,7 @@ export class CarbohydrateService {
   async findAll(): Promise<Carbohydrate[]> {
     return this.carbohydrateModel.find().populate('food', 'name').exec();
   }
+  
 
   async update(id: string, data: Partial<CreateCarbohydrateDto>): Promise<Carbohydrate | null> {
     return this.carbohydrateModel.findByIdAndUpdate(id, data, { new: true }).exec();
