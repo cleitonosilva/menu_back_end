@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Medicines } from '../../schemas/medicines.schema';
-import { CreateMedicinesDto } from './dto/create-medicines.dto';
+import { Medicines } from 'src/schemas/medicines.schema';
+import { CreateMedicinesDto } from '../dto/create-medicines.dto';
 
 @Injectable()
 export class MedicinesService {

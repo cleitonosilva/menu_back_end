@@ -1,6 +1,6 @@
 import { Controller, Post, Get, Body } from '@nestjs/common';
-import { FoodService } from './food.service';
-import { CreateFoodDto } from './dto/create-food.dto';
+import { FoodService } from '../services/food.service';
+import { CreateFoodDto } from '../dto/create-food.dto';
 
 @Controller('food')
 export class FoodController {

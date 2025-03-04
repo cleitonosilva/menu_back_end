@@ -1,8 +1,8 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { MenuType } from '../../schemas/menu-type.schema';
-import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
+import { MenuType } from 'src/schemas/menu-type.schema';
+import { CreateMenuTypeDto } from '../dto/create-menu-type.dto';
 
 @Injectable()
 export class MenuTypeService {

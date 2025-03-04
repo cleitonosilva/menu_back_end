@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, UsePipes, ValidationPipe } from '@nestjs/common';
-import { MenuService } from './menu.service';
-import { CreateMenuDto } from './dto/create-menu.dto';
+import { MenuService } from '../services/menu.service';
+import { CreateMenuDto } from '../dto/create-menu.dto';
 import { Menu } from 'src/schemas/menu.schema';
 
 @Controller('menu')

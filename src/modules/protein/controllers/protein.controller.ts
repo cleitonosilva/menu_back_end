@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { ProteinService } from './protein.service';
-import { CreateProteinDto } from './dto/create-protein.dto';
+import { ProteinService } from '../services/protein.service';
+import { CreateProteinDto } from '../dto/create-protein.dto';
 
 @Controller('protein')
 export class ProteinController {

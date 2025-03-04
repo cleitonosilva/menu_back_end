@@ -1,8 +1,8 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Food } from '../../schemas/food.schema';
-import { CreateFoodDto } from './dto/create-food.dto';
+import { CreateFoodDto } from '../dto/create-food.dto';
+import { Food } from 'src/schemas/food.schema';
 
 @Injectable()
 export class FoodService {

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { MenuTypeService } from './menu-type.service';
-import { CreateMenuTypeDto } from './dto/create-menu-type.dto';
+import { MenuTypeService } from '../services/menu-type.service';
+import { CreateMenuTypeDto } from '../dto/create-menu-type.dto';
 
 @Controller('menu-type')
 export class MenuTypeController {

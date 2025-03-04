@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { CarbohydrateService } from './carbohydrate.service';
-import { CreateCarbohydrateDto } from './dto/create-carbohydrate.dto';
+import { CarbohydrateService } from '../services/carbohydrate.service';
+import { CreateCarbohydrateDto } from '../dto/create-carbohydrate.dto';
 
 @Controller('carbohydrate')
 export class CarbohydrateController {
