@@ -5,6 +5,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MenuModule } from './modules/menu/menu.module';
 import { MenuTypeModule } from './modules/menu-types/menu-type.module';
+import { FoodModule } from './modules/food/food.module';
+import { AccompanimentModule } from './modules/accompaniment/accompaniment.module';
+import { CarbohydrateModule } from './modules/carbohydrate/carbohydrate.module';
+import { ProteinModule } from './modules/protein/protein.module';
+import { MedicinesModule } from './modules/medicines/medicines.module';
 
 @Module({
   imports: [
@@ -12,6 +17,11 @@ import { MenuTypeModule } from './modules/menu-types/menu-type.module';
     MongooseModule.forRoot(process.env.MONGODB_URI || 'mongodb://localhost:27017/meu_banco'),
     MenuModule, 
     MenuTypeModule,
+    FoodModule,
+    CarbohydrateModule,
+    ProteinModule,
+    AccompanimentModule,
+    MedicinesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
