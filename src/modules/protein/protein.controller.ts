@@ -3,7 +3,7 @@ import { ProteinService } from './protein.service';
 import { CreateProteinDto } from './dto/create-protein.dto';
 
 @Controller('protein')
-export class proteinController {
+export class ProteinController {
   constructor(private readonly proteinService: ProteinService) {}
 
   @Post()
