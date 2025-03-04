@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Menu, MenuSchema } from 'src/schemas/menu.schema';
-import { MenuController } from './menu.controller';
-import { MenuService } from './menu.service';
 import { MenuTypeModule } from '../menu-types/menu-type.module';
+import { MenuController } from './controllers/menu.controller';
+import { MenuService } from './services/menu.service';
 @Module({
   imports: [MongooseModule.forFeature([{ name: Menu.name, schema: MenuSchema }]),
     MenuTypeModule,

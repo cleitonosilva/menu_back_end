@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Protein, ProteinSchema } from '../../schemas/protein.schema';
-import { ProteinService } from './protein.service';
+import { ProteinController } from './controllers/protein.controller';
+import { ProteinService } from './services/protein.service';
 import { FoodModule } from '../food/food.module';
-import { ProteinController } from './protein.controller';
 
 @Module({
   imports: [
