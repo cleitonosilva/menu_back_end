@@ -1,11 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-import { Food, FoodSchema } from './food.schema';
+import { Document, Types } from 'mongoose';
+import { Food } from './food.schema';
 
 @Schema()
 export class Carbohydrate extends Document {
-  @Prop({ type: FoodSchema, required: true })
-  food: Food;
+  @Prop({ type: Types.ObjectId, ref: 'Food', required: true })
+  food: Types.ObjectId;
 
   @Prop({ required: true })
   tablespoon: number;
