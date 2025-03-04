@@ -16,6 +16,11 @@ export class FoodController {
     return this.foodService.findAll();
   }
 
+  @Get(':id')
+  async findById(@Param('id') id: string) {
+    return this.foodService.findById(id);
+  }
+
   @Put(':id')
   async update(@Param('id') id: string, @Body() data: Partial<CreateFoodDto>) {
     const updatedFood = await this.foodService.update(id, data);
