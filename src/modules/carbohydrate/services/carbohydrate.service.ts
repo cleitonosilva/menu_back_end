@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateCarbohydrateDto } from 'src/modules/carbohydrate/dto/create-carbohydrate.dto';
-import { Carbohydrate } from 'src/schemas/carbohydrate.schema';
+import { Carbohydrate } from '../../../schemas/carbohydrate.schema';
+import { CreateCarbohydrateDto } from '../dto/create-carbohydrate.dto';
 
 @Injectable()
 export class CarbohydrateService {
@@ -10,5 +10,17 @@ export class CarbohydrateService {
 
   async create(data: CreateCarbohydrateDto): Promise<Carbohydrate> {
     return this.carbohydrateModel.create(data);
+  }
+
+  async findAll(): Promise<Carbohydrate[]> {
+    return this.carbohydrateModel.find().populate('food', 'name').exec();
+  }
+
+  async update(id: string, data: Partial<CreateCarbohydrateDto>): Promise<Carbohydrate | null> {
+    return this.carbohydrateModel.findByIdAndUpdate(id, data, { new: true }).exec();
+  }
+
+  async delete(id: string): Promise<Carbohydrate | null> {
+    return this.carbohydrateModel.findByIdAndDelete(id).exec();
   }
 }
