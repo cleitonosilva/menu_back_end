@@ -33,8 +33,24 @@ export class CarbohydrateService {
   
 
   async update(id: string, data: Partial<CreateCarbohydrateDto>): Promise<Carbohydrate | null> {
-    return this.carbohydrateModel.findByIdAndUpdate(id, data, { new: true }).exec();
+    if (data.food) {
+      const foodExists = await this.foodModel.findById(data.food);
+      if (!foodExists) {
+        throw new NotFoundException('O alimento fornecido não existe.');
+      }
+    }
+  
+    const updatedCarbohydrate = await this.carbohydrateModel
+      .findByIdAndUpdate(id, data, { new: true })
+      .populate('food');
+  
+    if (!updatedCarbohydrate) {
+      throw new NotFoundException('Carboidrato não encontrado.');
+    }
+  
+    return updatedCarbohydrate;
   }
+  
 
   async delete(id: string): Promise<Carbohydrate | null> {
     return this.carbohydrateModel.findByIdAndDelete(id).exec();
