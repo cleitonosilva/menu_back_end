@@ -8,6 +8,6 @@ import { FoodService } from './services/food.service';
   imports: [MongooseModule.forFeature([{ name: Food.name, schema: FoodSchema }])],
   controllers: [FoodController],
   providers: [FoodService],
-  exports: [FoodService]
+  exports: [FoodService, MongooseModule]
 })
 export class FoodModule {}
