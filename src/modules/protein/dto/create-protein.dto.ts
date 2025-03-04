@@ -1,12 +1,9 @@
-import { IsNotEmpty, IsNumber, ValidateNested } from 'class-validator';
-import { Type } from 'class-transformer';
-import { FoodDto } from 'src/modules/food/dto/food.dto';
+import { IsMongoId, IsNotEmpty, IsNumber } from 'class-validator';
 
 export class CreateProteinDto {
-  @ValidateNested()
-  @Type(() => FoodDto)
+  @IsMongoId({ message: 'O ID do alimento deve ser um ObjectId válido.' })
   @IsNotEmpty({ message: 'O alimento é obrigatório.' })
-  food: FoodDto;
+  food: string; 
 
   @IsNumber()
   @IsNotEmpty({ message: 'A quantidade em colheres é obrigatória.' })
