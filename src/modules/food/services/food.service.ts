@@ -6,6 +6,7 @@ import { CreateFoodDto } from '../dto/create-food.dto';
 import { Accompaniment } from 'src/schemas/accompaniment.schema';
 import { Carbohydrate } from 'src/schemas/carbohydrate.schema';
 import { Protein } from 'src/schemas/protein.schema';
+import mongoose from 'mongoose';
 
 @Injectable()
 export class FoodService {
@@ -69,22 +70,47 @@ export class FoodService {
   }
   
 
-  async findById(id: string): Promise<Omit<Food, keyof Document> & { category: string | null }> {
+  async findById(id: string): Promise<Omit<Food, keyof Document> & { category: string | null, categoryId: string | null, grams: number | null, tablespoon: number | null }> {
     const food = await this.foodModel.findById(id).lean();
     if (!food) {
       throw new NotFoundException('Alimento não encontrado.');
     }
   
-    const isCarbohydrate = await this.carbohydrateModel.exists({ food: id });
-    const isProtein = await this.proteinModel.exists({ food: id });
-    const isAccompaniment = await this.accompanimentModel.exists({ food: id });
+    const foodObjectId = new mongoose.Types.ObjectId(id);
+  
+    const carbohydrate = await this.carbohydrateModel.findOne({ food: foodObjectId }).lean();
+    const protein = await this.proteinModel.findOne({ food: foodObjectId }).lean();
+    const accompaniment = await this.accompanimentModel.findOne({ food: foodObjectId }).lean();
   
     let category: string | null = null;
-    if (isCarbohydrate) category = 'Carbohydrate';
-    if (isProtein) category = 'Protein';
-    if (isAccompaniment) category = 'Accompaniment';
+    let categoryId: string | null = null;
+    let grams: number | null = null;
+    let tablespoon: number | null = null;
   
-    return { ...food, category };
+    if (carbohydrate) {
+      category = 'Carbohydrate';
+      categoryId = carbohydrate._id.toString();
+      grams = carbohydrate.grams ?? null;
+      tablespoon = carbohydrate.tablespoon ?? null;
+    } else if (protein) {
+      category = 'Protein';
+      categoryId = protein._id.toString();
+      grams = protein.grams ?? null;
+      tablespoon = protein.tablespoon ?? null;
+    } else if (accompaniment) {
+      category = 'Accompaniment';
+      categoryId = accompaniment._id.toString();
+      grams = accompaniment.grams ?? null;
+      tablespoon = accompaniment.tablespoon ?? null;
+    }
+  
+    return {
+      ...food,
+      category, 
+      categoryId, 
+      grams, 
+      tablespoon 
+    };
   }
   
 
