@@ -18,14 +18,15 @@ export class CarbohydrateService {
       throw new NotFoundException('O alimento fornecido não existe.');
     }
   
-    return this.carbohydrateModel.create({
+    const carbohydrate = await this.carbohydrateModel.create({
       food: foodExists._id,
       tablespoon: data.tablespoon,
       grams: data.grams
     });
+  
+    return carbohydrate.populate('food'); 
   }
   
-
   async findAll(): Promise<Carbohydrate[]> {
     return this.carbohydrateModel.find().populate('food', 'name').exec();
   }
