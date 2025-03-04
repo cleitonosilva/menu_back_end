@@ -15,7 +15,6 @@ export class AccompanimentService {
     @InjectModel(Carbohydrate.name) private carbohydrateModel: Model<Carbohydrate>,
     @InjectModel(Protein.name) private proteinModel: Model<Protein>, 
     @InjectModel(Accompaniment.name) private accompanimentModel: Model<Accompaniment>,
-    @InjectModel(Medicines.name) private medicinesModel: Model<Medicines>, 
     @InjectModel(Food.name) private foodModel: Model<Food> 
     
   ) {}
@@ -31,7 +30,6 @@ export class AccompanimentService {
       this.carbohydrateModel,
       this.proteinModel,
       this.accompanimentModel,
-      this.medicinesModel
     );
     if (foodUsed) {
       throw new BadRequestException('O alimento já pertence a outra categoria.');

@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import { Carbohydrate } from '../../../schemas/carbohydrate.schema';
 import { Protein } from '../../../schemas/protein.schema';
 import { Accompaniment } from '../../../schemas/accompaniment.schema';
-import { Medicines } from '../../../schemas/medicines.schema';
 import { Food } from '../../../schemas/food.schema';
 import { CreateCarbohydrateDto } from '../dto/create-carbohydrate.dto';
 import { isFoodAlreadyUsed } from '../../../common/utils/food-validation.util';
@@ -15,7 +14,6 @@ export class CarbohydrateService {
     @InjectModel(Carbohydrate.name) private carbohydrateModel: Model<Carbohydrate>,
     @InjectModel(Protein.name) private proteinModel: Model<Protein>, 
     @InjectModel(Accompaniment.name) private accompanimentModel: Model<Accompaniment>,
-    @InjectModel(Medicines.name) private medicinesModel: Model<Medicines>, 
     @InjectModel(Food.name) private foodModel: Model<Food> 
   ) {}
 
@@ -30,7 +28,6 @@ export class CarbohydrateService {
       this.carbohydrateModel,
       this.proteinModel,
       this.accompanimentModel,
-      this.medicinesModel
     );
     if (foodUsed) {
       throw new BadRequestException('O alimento já pertence a outra categoria.');
