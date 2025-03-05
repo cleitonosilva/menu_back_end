@@ -10,6 +10,8 @@ import { AccompanimentModule } from './modules/accompaniment/accompaniment.modul
 import { CarbohydrateModule } from './modules/carbohydrate/carbohydrate.module';
 import { ProteinModule } from './modules/protein/protein.module';
 import { MedicinesModule } from './modules/medicines/medicines.module';
+import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { MedicinesModule } from './modules/medicines/medicines.module';
     ProteinModule,
     AccompanimentModule,
     MedicinesModule,
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
